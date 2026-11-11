@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "slug": "vereinskalender",
+      "component": "Vereinskalender",
+      "title": "Vereinskalender",
+      "endpoints": [
+        {
+          "entity": "vereinstermine",
+          "op": "list",
+          "fields": [
+            "titel",
+            "kategorie",
+            "beginn",
+            "ende",
+            "ganztaegig",
+            "ort_name",
+            "strasse",
+            "hausnummer",
+            "plz",
+            "stadt",
+            "beschreibung",
+            "ansprechpartner_vorname",
+            "ansprechpartner_nachname",
+            "kontakt_email",
+            "weblink"
+          ],
+          "max_records": 500
+        }
+      ]
+    }
+  ]
+}
