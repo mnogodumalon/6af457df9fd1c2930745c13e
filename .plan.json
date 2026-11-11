@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "language": "de",
+  "understanding": {
+    "summary": "Der Vereinskalender sammelt alle Termine des Vereins. Nur der Administrator legt Termine an und pflegt sie, mit Titel, Kategorie, Beginn, Ende, Ort, Ansprechpartner und Beschreibung. Die Mitglieder bekommen einen QR-Code und sehen damit den Kalender ohne Login in einer übersichtlichen Monatsansicht. Ein Klick auf einen Termin zeigt weitere Infos wie Ort, Beschreibung, Kontakt und Link.",
+    "outside_users": [
+      {
+        "who": "Mitglieder",
+        "does": "öffnen den Kalender per QR-Code, blättern durch die Monate und sehen Details zu einem Termin"
+      }
+    ],
+    "roles": [
+      "Administrator",
+      "Mitglied"
+    ],
+    "main_tasks": [
+      "Termine eingeben und pflegen",
+      "Kalender als Monatsblätter ansehen",
+      "Details zu einem Termin aufrufen"
+    ],
+    "platform_roles": [
+      {
+        "persona": "Administrator",
+        "role": "administrator",
+        "apps": [
+          "vereinstermine"
+        ]
+      }
+    ],
+    "wish_kind": "plain",
+    "wish_signals": []
+  },
+  "flows": [
+    {
+      "slug": "termin-anlegen",
+      "label": {
+        "de": "Termin anlegen",
+        "en": "Create event"
+      },
+      "description": "Der Administrator trägt einen neuen Vereinstermin mit Zeit, Ort, Ansprechpartner und Beschreibung ein.",
+      "priority": "must",
+      "writes": [
+        {
+          "entity": "vereinstermine",
+          "op": "create",
+          "when": "always",
+          "fields": {
+            "titel": "user",
+            "kategorie": "user",
+            "beginn": "user",
+            "ende": "user",
+            "ganztaegig": "user",
+            "ort_name": "user",
+            "strasse": "user",
+            "hausnummer": "user",
+            "plz": "user",
+            "stadt": "user",
+            "beschreibung": "user",
+            "ansprechpartner_vorname": "user",
+            "ansprechpartner_nachname": "user",
+            "kontakt_email": "user",
+            "weblink": "user"
+          },
+          "multiple": false,
+          "needs": {}
+        }
+      ],
+      "required": [],
+      "brief": "# Flow `termin-anlegen` — Termin anlegen\nDer Administrator trägt einen neuen Vereinstermin mit Zeit, Ort, Ansprechpartner und Beschreibung ein.\n\n## Your hook — import it, never rebuild what it owns\n`import { useTerminAnlegenFlow } from '@/lib/journey/flows/TerminAnlegen';` — generated from the Schreibliste below. It OWNS the form(s), one record search per picked field (columns and filter from the plan) and the submit plan with every fixed and derived value. You compose: `flow.forms.<entity>` for <Bound>/<Field>, `{...flow.picks.<field>.select} {...flow.pick('<field>')}` (or `flow.pickMany` for a multi pick) for <EntitySelectStep>, `flow.validateStep(n)` in StepNav.onNext, `flow.submit` + `flow.formList` for SummaryStep/SuccessStep, `flow.reset()`; what the hook does not own reads through its door `flow.port` — availability `useOccupancy(flow.port, '<entity>', { resource })`, a count `useRecordCount(flow.port, …)` — never import servicePort next to the hook. Options: `steps` (field → step), `items` (how a hit reads, per pick), `initial`, `messages`. The hook's docblock in .lane-context.md shows the exact call. Never import servicePort, useStepForm, useJourneySubmit, useRecordSearch or useDashboardData in this page — check-intents refuses a page that uses the hook and any of them.\n\n## Steps (in this order)\n1. Titel und Kategorie wählen\n2. Beginn und Ende festlegen oder ganztägig ankreuzen\n3. Ort mit Straße, Hausnummer, Postleitzahl und Stadt eintragen\n4. Ansprechpartner, Kontakt E-Mail und Link eintragen\n5. Beschreibung ergänzen und speichern\n\n## Schreibliste — the ONLY writes this flow makes (the gate compares your plan steps with this list)\n- creates `vereinstermine`:\n    - `titel`: the user enters it (bind it through the layer: form.field/…)\n    - `kategorie`: the user enters it (bind it through the layer: form.field/…)\n    - `beginn`: the user enters it (bind it through the layer: form.field/…)\n    - `ende`: the user enters it (bind it through the layer: form.field/…)\n    - `ganztaegig`: the user enters it (bind it through the layer: form.field/…)\n    - `ort_name`: the user enters it (bind it through the layer: form.field/…)\n    - `strasse`: the user enters it (bind it through the layer: form.field/…)\n    - `hausnummer`: the user enters it (bind it through the layer: form.field/…)\n    - `plz`: the user enters it (bind it through the layer: form.field/…)\n    - `stadt`: the user enters it (bind it through the layer: form.field/…)\n    - `beschreibung`: the user enters it (bind it through the layer: form.field/…)\n    - `ansprechpartner_vorname`: the user enters it (bind it through the layer: form.field/…)\n    - `ansprechpartner_nachname`: the user enters it (bind it through the layer: form.field/…)\n    - `kontakt_email`: the user enters it (bind it through the layer: form.field/…)\n    - `weblink`: the user enters it (bind it through the layer: form.field/…)\n\n## Success page\n- shows: `vereinstermine.titel`, `vereinstermine.beginn`\n"
+    }
+  ],
+  "public_pages": [
+    {
+      "slug": "vereinskalender",
+      "purpose": "Mitglieder öffnen den Kalender per QR-Code ohne Login und sehen alle Vereinstermine in einer übersichtlichen Monatsansicht mit Monatsblättern. Ein Klick auf einen Termin zeigt weitere Infos wie Ort, Beschreibung, Ansprechpartner, Kontakt und Link.",
+      "publish": true,
+      "lists": [
+        {
+          "entity": "vereinstermine",
+          "columns": [
+            "titel",
+            "kategorie",
+            "beginn",
+            "ende",
+            "ganztaegig",
+            "ort_name",
+            "strasse",
+            "hausnummer",
+            "plz",
+            "stadt",
+            "beschreibung",
+            "ansprechpartner_vorname",
+            "ansprechpartner_nachname",
+            "kontakt_email",
+            "weblink"
+          ],
+          "filter": null,
+          "max_records": null
+        }
+      ],
+      "creates": [],
+      "brief": "# Public page `vereinskalender`\nMitglieder öffnen den Kalender per QR-Code ohne Login und sehen alle Vereinstermine in einer übersichtlichen Monatsansicht mit Monatsblättern. Ein Klick auf einen Termin zeigt weitere Infos wie Ort, Beschreibung, Ansprechpartner, Kontakt und Link.\n\n## Lists (declare exactly these in the surface)\n- `vereinstermine`: columns `titel`, `kategorie`, `beginn`, `ende`, `ganztaegig`, `ort_name`, `strasse`, `hausnummer`, `plz`, `stadt`, `beschreibung`, `ansprechpartner_vorname`, `ansprechpartner_nachname`, `kontakt_email`, `weblink`\n\n## Availability — mechanical, write nothing for it\nA picker (`useRecordSearch`) never offers a record another record already takes (a booked slot) — the layer leaves it out. To SHOW booked periods, call `useOccupancy(port, '<entity>')` and hand `blocked` to AvailabilityRangePicker; the integration gives the page exactly that read (dates or the reference, never who booked). Never declare a list of bookings with names or contacts to work availability out yourself.\n\nPublish: yes\n"
+    }
+  ],
+  "tools": [],
+  "covered_by_platform": [
+    {
+      "wish": "Termine gibt nur der Administrator ein",
+      "feature": "user_roles"
+    },
+    {
+      "wish": "Termine eingeben und bearbeiten",
+      "feature": "record_form"
+    }
+  ],
+  "ownership": {
+    "vereinstermine": {
+      "titel": "intent:termin-anlegen",
+      "kategorie": "intent:termin-anlegen",
+      "beginn": "intent:termin-anlegen",
+      "ende": "intent:termin-anlegen",
+      "ganztaegig": "intent:termin-anlegen",
+      "ort_name": "intent:termin-anlegen",
+      "strasse": "intent:termin-anlegen",
+      "hausnummer": "intent:termin-anlegen",
+      "plz": "intent:termin-anlegen",
+      "stadt": "intent:termin-anlegen",
+      "beschreibung": "intent:termin-anlegen",
+      "ansprechpartner_vorname": "intent:termin-anlegen",
+      "ansprechpartner_nachname": "intent:termin-anlegen",
+      "kontakt_email": "intent:termin-anlegen",
+      "weblink": "intent:termin-anlegen"
+    }
+  },
+  "dashboard": {
+    "focus": [
+      "Anstehende Termine der nächsten Wochen",
+      "Termine nach Kategorie",
+      "Termine im aktuellen Monat"
+    ],
+    "hints": [
+      "Termine zeitlich nach Beginn sortieren",
+      "Kategorie als Verteilung zeigen"
+    ],
+    "writes": [],
+    "wishes": []
+  }
+}

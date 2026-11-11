@@ -1,0 +1,25 @@
+{
+  "pages": {
+    "en": {
+      "Aktuell sind keine Termine geplant.": "No events are currently scheduled.",
+      "Alles vollständig": "All complete",
+      "Als Nächstes: {0} ({1}) – danach {2}.": "Next up: {0} ({1}) – then {2}.",
+      "Als Nächstes: {0} ({1}).": "Next up: {0} ({1}).",
+      "Anstehende Termine": "Upcoming events",
+      "Im aktuellen Monat": "This month",
+      "Kategorie": "Category",
+      "Keine passenden Termine.": "No matching events.",
+      "Neuer Termin": "New event",
+      "Nichts geplant": "Nothing scheduled",
+      "Nächste 7 Tage": "Next 7 days",
+      "Ohne Ortsangabe": "No location",
+      "Ohne Titel": "Untitled",
+      "Ort ergänzen": "Add location",
+      "Termin anlegen": "Create event",
+      "Termine im aktuellen Monat": "Events this month",
+      "Termine nach Kategorie": "Events by category",
+      "Zuerst: {0}": "First: {0}"
+    }
+  },
+  "v": 1
+}

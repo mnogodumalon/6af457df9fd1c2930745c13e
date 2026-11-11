@@ -1,0 +1,13 @@
+{
+  "entities": {
+    "Vereinstermine": {
+      "placeholders_set": 14,
+      "defaults_keys": [
+        "beginn",
+        "ganztaegig"
+      ],
+      "computed_keys": [],
+      "reason": "Keine Formel, da es kein numerisches Feld oder Preis gibt und Beginn/Ende nur Zeitpunkte ohne Dauerfeld sind."
+    }
+  }
+}

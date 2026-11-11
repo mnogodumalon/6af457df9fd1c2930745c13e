@@ -1,0 +1,18 @@
+{
+  "VereinstermineDialog.tsx": {
+    "titel": "z. B. Jahreshauptversammlung",
+    "kategorie": "z. B. Training, Ausflug",
+    "beginn": "Wann beginnt der Termin?",
+    "ende": "Wann endet der Termin?",
+    "ort_name": "z. B. Vereinsheim",
+    "strasse": "z. B. Hauptstraße",
+    "hausnummer": "z. B. 12a",
+    "plz": "z. B. 80331",
+    "stadt": "z. B. München",
+    "beschreibung": "Was passiert bei diesem Termin?",
+    "ansprechpartner_vorname": "z. B. Anna",
+    "ansprechpartner_nachname": "z. B. Müller",
+    "kontakt_email": "z. B. anna@verein.de",
+    "weblink": "z. B. https://verein.de"
+  }
+}
